@@ -80,3 +80,44 @@ status
 ```
 nel terminale Klipper per confermare "printer is ready" ✅.  
 Se errori, controlla log in `~/printer_data/logs/klippy.log`📋.
+<br><br>
+<br><br>
+## MCU Linux (Raspberry Pi come Microcontrollore) 🖥️🔌
+
+**Opzionale:** Usa il Raspberry Pi come MCU secondario per accedere ai GPIO direttamente da Klipper.
+```
+cd ~/klipper/
+make menuconfig
+```
+**Impostazioni menuconfig:**
+- **Microcontroller Architecture**: `Linux process`
+- Salva (Q → Y) 💾.
+```
+sudo service klipper stop
+make flash
+sudo service klipper start
+```
+**Configurazione printer.cfg:**
+
+`[mcu]`<br><br>
+`serial: /tmp/klipper_host_mcu`
+
+**Nota:** Se errore "Permission denied", esegui:
+```
+sudo usermod -a -G tty pi
+```
+**Abilita interfacce opzionali:**
+```
+sudo raspi-config 
+```
+→ Interface Options → SPI/I2C
+
+**Verifica GPIO disponibili:**
+```
+sudo apt-get install gpiod
+gpiodetect
+gpioinfo
+```
+**Esempio pin RPi:**
+[mcu]
+serial: /tmp/klipper_host_mcu
