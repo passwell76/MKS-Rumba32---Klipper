@@ -81,7 +81,6 @@ status
 nel terminale Klipper per confermare "printer is ready" ✅.  
 Se errori, controlla log in `~/printer_data/logs/klippy.log`📋.
 <br><br>
-<br><br>
 ## MCU Linux (Raspberry Pi come Microcontrollore) 🖥️🔌
 
 **Opzionale:** Usa il Raspberry Pi come MCU secondario per accedere ai GPIO direttamente da Klipper.
